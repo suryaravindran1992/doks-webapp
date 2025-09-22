@@ -46,7 +46,9 @@ After cluster creation,
 
     
     kubectl apply -f deployment.yaml
+
     kubectl apply -f service.yaml
+
     kubectl apply -f hpa.yaml
 
     
@@ -80,8 +82,11 @@ Monitoring
 
     
     kubectl delete -f service.yaml
+
     kubectl delete -f deployment.yaml
+
     kubectl delete -f hpa.yaml
+
     doctl kubernetes cluster delete my-k8s-cluster
 
     

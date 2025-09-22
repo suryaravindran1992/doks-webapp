@@ -33,7 +33,7 @@ This repository contains Kubernetes manifests and configuration files for deploy
 3. Create DOKS cluster:
  
 
-    doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-4gb --enable-autoscaling --min-nodes 2 --max-nodes 3
+    doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-2gb --enable-autoscaling --min-nodes 2 --max-nodes 3
 
     
 4. Connect to the cluster

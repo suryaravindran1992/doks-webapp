@@ -17,6 +17,7 @@ This repository contains Kubernetes manifests and configuration files for deploy
 1. Clone the repository:
 
     git clone https://github.com/suryaravindran1992/doks-webapp.git
+
     cd doks-webapp
 
     
@@ -24,6 +25,7 @@ This repository contains Kubernetes manifests and configuration files for deploy
 2. Build and push Docker image:
 
     docker build -t <your-dockerhub-username>/do-web-app:latest .
+
     docker push <your-dockerhub-username>/do-web-app:latest
 
     

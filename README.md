@@ -8,13 +8,12 @@ This repository contains Kubernetes manifests and configuration files for deploy
     
 
 doks-webapp/
-├── Dockerfile          # Container image definition
-├── index.html         # Static web content
-├── deployment.yaml    # Kubernetes deployment configuration
-├── service.yaml      # LoadBalancer service configuration
-├── hpa.yaml          # Horizontal Pod Autoscaler configuration
-└── README.md         # This documentation
-
+├── Dockerfile # Container image definition
+├── index.html # Web application content
+├── deployment.yaml # Kubernetes deployment configuration
+├── service.yaml # Kubernetes service configuration
+├── hpa.yaml # Horizontal Pod Autoscaler configuration
+└── README.md # This documentation
     
 
 ## Prerequisites
@@ -32,15 +31,15 @@ cd doks-webapp
 
     
 
-    Build and push Docker image:
+2. Build and push Docker image:
 
-    
+```bash    
 docker build -t <your-dockerhub-username>/do-web-app:latest .
 docker push <your-dockerhub-username>/do-web-app:latest
 
     
 
-    Create DOKS cluster:
+3. Create DOKS cluster:
 
     
 # Parameters explained:
@@ -52,11 +51,20 @@ docker push <your-dockerhub-username>/do-web-app:latest
 # --min-nodes 2          : Minimum nodes in the cluster
 # --max-nodes 3          : Maximum nodes when scaled up
 
+```bash
 doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-2gb --enable-autoscaling --min-nodes 2 --max-nodes 3
 
     
+4. Connect to the cluster
 
-    Deploy the application:
+After cluster creation,
+
+```bash
+doctl kubernetes cluster kubeconfig save web-app-cluster
+kubectl get nodes # Verify connection
+
+    
+5. Deploy the application:
 
     
 kubectl apply -f deployment.yaml
@@ -89,7 +97,7 @@ kubectl get services
 
     
 
-Cleanup
+6. Cleanup (Optional)
 
     
 kubectl delete -f service.yaml

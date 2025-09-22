@@ -16,56 +16,48 @@ This repository contains Kubernetes manifests and configuration files for deploy
 
 1. Clone the repository:
 
-git clone https://github.com/suryaravindran1992/doks-webapp.git
-cd doks-webapp
+    git clone https://github.com/suryaravindran1992/doks-webapp.git
+    cd doks-webapp
 
     
 
 2. Build and push Docker image:
 
-docker build -t <your-dockerhub-username>/do-web-app:latest .
-docker push <your-dockerhub-username>/do-web-app:latest
+    docker build -t <your-dockerhub-username>/do-web-app:latest .
+    docker push <your-dockerhub-username>/do-web-app:latest
 
     
 
 3. Create DOKS cluster:
+ 
 
-    
- Parameters explained:
-   --region blr1          : Deploy in Bangalore region
-   --version 1.33.1-do.3  : Kubernetes version to use
-   --count 2              : Initial number of nodes
-   --size s-2vcpu-2gb     : Each node has 2 vCPUs and 2GB RAM
-   --enable-autoscaling   : Allow node pool to scale automatically
-   --min-nodes 2          : Minimum nodes in the cluster
-   --max-nodes 3          : Maximum nodes when scaled up
-
-doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-2gb --enable-autoscaling --min-nodes 2 --max-nodes 3
+    doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-2gb --enable-autoscaling --min-nodes 2 --max-nodes 3
 
     
 4. Connect to the cluster
 
 After cluster creation,
 
-doctl kubernetes cluster kubeconfig save web-app-cluster
-kubectl get nodes # Verify connection
+    doctl kubernetes cluster kubeconfig save web-app-cluster
+    kubectl get nodes # Verify connection
 
     
 5. Deploy the application:
 
     
-kubectl apply -f deployment.yaml
-kubectl apply -f service.yaml
-kubectl apply -f hpa.yaml
+    kubectl apply -f deployment.yaml
+    kubectl apply -f service.yaml
+    kubectl apply -f hpa.yaml
 
     
 
 Features
 
-    Automated scaling based on CPU utilization (70% threshold)
-    Load balancing across pods
-    Resource limits and requests configured
-    Node auto-scaling enabled
+- Automated scaling based on CPU utilization (70% threshold)
+- Load balancing across pods
+- Resource limits and requests configured
+- Node auto-scaling enabled
+
 
 Monitoring
 
@@ -87,10 +79,10 @@ Monitoring
 6. Cleanup (Optional)
 
     
-kubectl delete -f service.yaml
-kubectl delete -f deployment.yaml
-kubectl delete -f hpa.yaml
-doctl kubernetes cluster delete my-k8s-cluster
+    kubectl delete -f service.yaml
+    kubectl delete -f deployment.yaml
+    kubectl delete -f hpa.yaml
+    doctl kubernetes cluster delete my-k8s-cluster
 
     
 

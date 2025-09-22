@@ -24,8 +24,9 @@ doks-webapp/
 
 ## Quick Start
 
+
 1. Clone the repository:
-```bash
+
 git clone https://github.com/suryaravindran1992/doks-webapp.git
 cd doks-webapp
 
@@ -33,7 +34,6 @@ cd doks-webapp
 
 2. Build and push Docker image:
 
-```bash    
 docker build -t <your-dockerhub-username>/do-web-app:latest .
 docker push <your-dockerhub-username>/do-web-app:latest
 
@@ -51,7 +51,6 @@ docker push <your-dockerhub-username>/do-web-app:latest
 # --min-nodes 2          : Minimum nodes in the cluster
 # --max-nodes 3          : Maximum nodes when scaled up
 
-```bash
 doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do.3 --count 2 --size s-2vcpu-2gb --enable-autoscaling --min-nodes 2 --max-nodes 3
 
     
@@ -59,7 +58,6 @@ doctl kubernetes cluster create my-k8s-cluster --region blr1 --version 1.33.1-do
 
 After cluster creation,
 
-```bash
 doctl kubernetes cluster kubeconfig save web-app-cluster
 kubectl get nodes # Verify connection
 
